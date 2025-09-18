@@ -5,11 +5,14 @@ Stack : Node.js, Express, MongoDB Atlas, JWT, Swagger
 
 MyContacts est une API backend pour gérer des utilisateurs avec authentification.
 Fonctionnalités principales :
-
 -Inscription (/auth/register)
+
 -Connexion (/auth/login)
+
 -Accès à une route protégée (/protected) avec JWT
+
 -Documentation Swagger accessible via /api-docs
+
 -Cette API peut servir de base pour un projet de gestion de contacts ou comme exercice de backend complet avec Node.js et MongoDB.
 
 - Installation :
