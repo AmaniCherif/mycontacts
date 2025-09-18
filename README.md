@@ -20,7 +20,9 @@ Fonctionnalités principales :
 - Installation :
 
 Clone le projet :
+
 git clone <ton-repo-url>
+
 cd mycontacts/backend
 
 Installer les dépendances :
@@ -28,16 +30,19 @@ Installer les dépendances :
 npm install
 
 
-Créer un fichier .env à la racine du backend et ajouter :
+- Créer un fichier .env à la racine du backend et ajouter :
 
 PORT=5000
+
 MONGO_URI=<ton-mongodb-atlas-connection-string>
+
 JWT_SECRET=supersecretkey
 
 
-Remplace <ton-mongodb-atlas-connection-string> par l’URI de ton cluster MongoDB Atlas.
+- Remplace <ton-mongodb-atlas-connection-string> par l’URI de ton cluster MongoDB Atlas.
 
-Lancer le serveur
+- Lancer le serveur
+
 npm run dev
 
 Le serveur tourne sur : http://localhost:5000
@@ -46,7 +51,7 @@ Swagger : http://localhost:5000/api-docs
 
 Routes API
 
-Méthode	Route	Description
+- Méthode	Route	Description
 
 POST	/auth/register	Créer un nouvel utilisateur
 
