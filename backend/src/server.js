@@ -16,6 +16,7 @@ require('./swagger')(app); //après la création de app
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
 
+
 // Middleware requireAuth
 const requireAuth = require('./middlewares/requireAuth');
 app.get('/protected', requireAuth, (req, res) => {

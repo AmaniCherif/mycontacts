@@ -3,7 +3,7 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
-
+const requireAuth = require('../middlewares/requireAuth');
 /**
  * @swagger
  * /auth/register:
@@ -78,6 +78,20 @@ router.post('/login', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
+});
+/**
+ * @swagger
+ * /auth/protected:
+ *   get:
+ *     summary: Route protégée (token requis)
+ *     tags:
+ *       - Auth
+ *     responses:
+ *       200:
+ *         description: Accès autorisé
+ */
+router.get('/protected', requireAuth, (req, res) => {
+  res.json({ msg: "Ceci est une route protégée", user: req.user });
 });
 
 module.exports = router;
