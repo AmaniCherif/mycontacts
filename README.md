@@ -44,19 +44,25 @@ Le serveur tourne sur : http://localhost:5000
 Swagger : http://localhost:5000/api-docs
 
 Routes API
+
 Méthode	Route	Description
+
 POST	/auth/register	Créer un nouvel utilisateur
+
 POST	/auth/login	Se connecter et obtenir un token
+
 GET	/protected	Accès à une route protégée (JWT)
 
 
 Exemple JSON pour /auth/register et /auth/login
+
 {
   "email": "user@example.com",
   "password": "password123"
 }
 
 Exemple de réponse JWT
+
 {
   "token": "eyJhbGciOiJIUzI1NiIsInR...",
   "user": {
@@ -89,9 +95,15 @@ curl -X GET http://localhost:5000/protected \
 - Technologies utilisées :
 
 Node.js
+
 Express
+
 MongoDB Atlas
+
 Mongoose
+
 JWT pour l’authentification
+
 Bcrypt pour le hash des mots de passe
+
 Swagger pour la documentation de l’API
