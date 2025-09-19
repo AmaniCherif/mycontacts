@@ -16,7 +16,7 @@ const options = {
         description: "Serveur de développement",
       },
     ],
-    // 👇 AJOUTEZ CETTE SECTION pour l'authentification
+   
     components: {
       securitySchemes: {
         bearerAuth: {
@@ -26,7 +26,7 @@ const options = {
         },
       },
     },
-    // 👇 AJOUTEZ CETTE LIGNE pour activer l'auth globalement
+
     security: [
       {
         bearerAuth: []
