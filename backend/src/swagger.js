@@ -10,8 +10,30 @@ const options = {
       version: "1.0.0",
       description: "Backend API for MyContacts project",
     },
+    servers: [
+      {
+        url: "http://localhost:5000",
+        description: "Serveur de développement",
+      },
+    ],
+    // 👇 AJOUTEZ CETTE SECTION pour l'authentification
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+        },
+      },
+    },
+    // 👇 AJOUTEZ CETTE LIGNE pour activer l'auth globalement
+    security: [
+      {
+        bearerAuth: []
+      }
+    ]
   },
-  apis: [path.join(__dirname, "/routes/*.js")],
+  apis: [path.join(__dirname, "/routes/*.js")], 
 };
 
 const specs = swaggerJsDoc(options);

@@ -16,6 +16,8 @@ require('./swagger')(app); //après la création de app
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
 
+const contactsRoutes = require('./routes/contacts');
+app.use('/api/contacts', contactsRoutes);
 
 // Middleware requireAuth
 const requireAuth = require('./middlewares/requireAuth');
@@ -33,3 +35,6 @@ mongoose.connect(MONGO_URI)
 
 // Start server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+
+
