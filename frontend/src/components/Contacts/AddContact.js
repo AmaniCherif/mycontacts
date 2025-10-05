@@ -1,5 +1,7 @@
+// AddContact.jsx
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Box, Button, TextField, Paper, Typography } from '@mui/material';
 
 function AddContact({ onContactAdded }) {
   const [firstName, setFirstName] = useState('');
@@ -9,13 +11,13 @@ function AddContact({ onContactAdded }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const token = localStorage.getItem('token'); // ou d'où tu stockes le token
+      const token = localStorage.getItem('token');
       const response = await axios.post(
         'http://localhost:5000/api/contacts',
         { firstName, lastName, phone },
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      onContactAdded(response.data); // callback pour mettre à jour la liste
+      onContactAdded(response.data);
       setFirstName('');
       setLastName('');
       setPhone('');
@@ -26,30 +28,37 @@ function AddContact({ onContactAdded }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Prénom"
-        value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
-        required
-      />
-      <input
-        type="text"
-        placeholder="Nom"
-        value={lastName}
-        onChange={(e) => setLastName(e.target.value)}
-        required
-      />
-      <input
-        type="text"
-        placeholder="Téléphone"
-        value={phone}
-        onChange={(e) => setPhone(e.target.value)}
-        required
-      />
-      <button type="submit">Ajouter Contact</button>
-    </form>
+    <Paper sx={{ p: 3, mb: 4 }}>
+      <Typography variant="h6" gutterBottom>
+        Ajouter un contact
+      </Typography>
+      <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+        <TextField
+          label="Prénom"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+          required
+          fullWidth
+        />
+        <TextField
+          label="Nom"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+          required
+          fullWidth
+        />
+        <TextField
+          label="Téléphone"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          required
+          fullWidth
+        />
+        <Button type="submit" variant="contained" color="primary">
+          Ajouter
+        </Button>
+      </Box>
+    </Paper>
   );
 }
 
