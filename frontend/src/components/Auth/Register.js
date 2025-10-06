@@ -89,12 +89,6 @@ function Register() {
             Sign Up
           </Button>
 
-          {/* Boutons sociaux */}
-          <Grid container spacing={2} justifyContent="center">
-            <Grid item><Button variant="outlined">Google</Button></Grid>
-            <Grid item><Button variant="outlined">LinkedIn</Button></Grid>
-            <Grid item><Button variant="outlined">SSO</Button></Grid>
-          </Grid>
 
           <Grid container justifyContent="flex-end" sx={{ mt: 2 }}>
             <Grid item>

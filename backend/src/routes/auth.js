@@ -26,21 +26,28 @@ const requireAuth = require('../middlewares/requireAuth');
  *       200:
  *         description: User registered successfully
  */
+// backend/src/routes/auth.js  (ou backend/src/auth.js selon ton arborescence)
 router.post('/register', async (req, res) => {
   try {
     const { email, password } = req.body;
     let user = await User.findOne({ email });
     if (user) return res.status(400).json({ msg: 'User already exists' });
 
-    user = new User({ email, password });
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    user = new User({ email, password: hashedPassword });
     await user.save();
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-    res.json({ token, user: { id: user._id, email: user.email } });
+
+    // <-- ici on renvoie 201
+    return res.status(201).json({ token, user: { id: user._id, email: user.email } });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    return res.status(500).json({ error: err.message });
   }
 });
+
 
 /**
  * @swagger
