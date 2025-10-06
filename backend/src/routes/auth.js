@@ -41,7 +41,6 @@ router.post('/register', async (req, res) => {
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-    // <-- ici on renvoie 201
     return res.status(201).json({ token, user: { id: user._id, email: user.email } });
   } catch (err) {
     return res.status(500).json({ error: err.message });
